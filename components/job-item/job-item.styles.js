@@ -4,7 +4,7 @@ import colors from '../../assets/styles/colors';
 export default StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    height: 100,
+    height: 130,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -19,15 +19,19 @@ export default StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    marginHorizontal: 5,
+    marginLeft: 5,
     borderLeftWidth: 3,
     borderLeftColor: colors.black,
     paddingLeft: 5,
-    alignSelf: 'stretch'
+    height: '100%',
   },
   image: {
     width: 80,
     height: 80,
     borderRadius: 40,
-  }
+  },
+  buttonArea: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
 });

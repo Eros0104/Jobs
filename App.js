@@ -6,24 +6,32 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-import Header from './components/header/header';
-import Container from './components/container/container';
-import JobItem from './components/job-item/job-item';
+import {Header, Container, JobItem, Modal} from './components';
 
 import {getAllJobs} from './functions/jobsService';
 
-const renderJobList = () => getAllJobs().map((o) => <JobItem {...o} />);
-
 const App = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const renderJobList = () =>
+    getAllJobs().map((o) => <JobItem {...o} onOpen={openModal} />);
   return (
     <>
       <Header title="Jobs" />
-      <Container>
-        {renderJobList()}
-      </Container>
+      <Container>{renderJobList()}</Container>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 };

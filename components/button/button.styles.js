@@ -7,8 +7,9 @@ export default StyleSheet.create({
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
-    padding: 25,
+    borderRadius: 50,
+    paddingVertical: 15,
+    paddingHorizontal: 10
   },
   touchableOpacity: {
     marginTop: 5,
