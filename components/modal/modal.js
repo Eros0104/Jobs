@@ -16,8 +16,16 @@ const Modal = ({isOpen, onClose, job, onSubscribe}) => {
 
   const openModal = () => {
     Animated.sequence([
-      Animated.timing(state.container, {toValue: 0, duration: 100}),
-      Animated.timing(state.opacity, {toValue: 1, duration: 300}),
+      Animated.timing(state.container, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(state.opacity, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }),
       Animated.spring(state.modal, {
         toValue: 0,
         bounciness: 5,
@@ -33,8 +41,16 @@ const Modal = ({isOpen, onClose, job, onSubscribe}) => {
         duration: 250,
         useNativeDriver: true,
       }),
-      Animated.timing(state.opacity, {toValue: 0, duration: 300}),
-      Animated.timing(state.container, {toValue: height, duration: 100}),
+      Animated.timing(state.opacity, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+      Animated.timing(state.container, {
+        toValue: height,
+        duration: 100,
+        useNativeDriver: true,
+      }),
     ]).start();
   };
 
