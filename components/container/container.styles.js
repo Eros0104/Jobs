@@ -1,10 +1,11 @@
-import { StyleSheet } from 'react-native';
-import colors from '../../assets/styles/colors';
+import {StyleSheet} from 'react-native';
+import {colors} from '../../assets';
 
 export default StyleSheet.create({
   view: {
     backgroundColor: colors.primary,
-    flex:1,
-    paddingHorizontal: 15,
+    flex: 1,
+    paddingHorizontal: 10,
   },
+  scrollView: {},
 });

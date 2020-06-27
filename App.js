@@ -7,16 +7,16 @@
  */
 
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Header, Container, JobItem, Modal, Footer} from './components';
 
-import {Header, Container, JobItem, Modal} from './components';
-
-import {getAllJobs} from './functions/jobsService';
+import {getAllJobs, subscribeToJob} from './functions';
 
 const App = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(undefined);
 
-  const openModal = () => {
+  const openModal = (job) => {
+    setModalContent(job);
     setModalOpen(true);
   };
 
@@ -25,21 +25,26 @@ const App = () => {
   };
 
   const renderJobList = () =>
-    getAllJobs().map((o) => <JobItem {...o} onOpen={openModal} />);
+    getAllJobs().map((o) => (
+      <JobItem
+        {...o}
+        onOpen={() => openModal(o)}
+        onSubscribe={subscribeToJob}
+      />
+    ));
   return (
     <>
       <Header title="Jobs" />
       <Container>{renderJobList()}</Container>
-
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
+      <Footer />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        job={modalContent}
+        onSubscribe={subscribeToJob}
+      />
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  centralize: {
-    alignItems: 'center',
-  },
-});
 
 export default App;

@@ -5,4 +5,5 @@ export default [
   require('./4.jpg'),
   require('./5.jpg'),
   require('./6.jpg'),
+  require('./7.jpg'),
 ];
